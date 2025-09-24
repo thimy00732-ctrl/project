@@ -27,14 +27,16 @@ function renderCarousel(allProducts, selector, filterKeyword, isKeyword = false,
             infoHTML = `<div class="diamond-info"><ul>${paramsHTML}</ul><p>${p.desPar.desc}</p></div>`;
         }
         return `
-            <div class="item_carosel">
-                <img src="${p.img}" alt="${p.name}">
-                <p>${p.name}</p>
-                <h5>${Number(p.price).toLocaleString()}₫</h5>
-                <div class="review">5 sao - lượt bán</div>
-                ${infoHTML}
-            </div>
-        `;
+    <div class="item_carosel">
+     <img src="${p.img}" alt="${p.name}">
+        <a href="./userwed/detail/detail.html?id=${p.id}"target="_blank">
+            <p>${p.name}</p>
+        </a>
+        <h5>${Number(p.price).toLocaleString()}₫</h5>
+        <div class="review">5 sao - lượt bán</div>
+        ${infoHTML}
+    </div>
+`;
     }).join("");
 
     // Init Owl Carousel
@@ -42,7 +44,7 @@ function renderCarousel(allProducts, selector, filterKeyword, isKeyword = false,
         loop: true,
         margin: 10,
         nav: true,
-  
+
         responsive: {
             0: { items: 1 },
             600: { items: Math.min(2, itemsCount) },
@@ -61,15 +63,14 @@ async function getData() {
         renderCarousel(allProducts, ".newCollection__carosel", "newCollection", false, 3);
         renderCarousel(allProducts, ".diamond__carosel", "diamond");
         renderCarousel(allProducts, ".ECZ__carosel", "ECZ");
-        renderCarousel(allProducts, ".necklace__owl-carousel", "dây chuyền", true);
+        renderCarousel(allProducts, ".necklace__owl-carousel", "necklace");
         renderCarousel(allProducts, ".pearl__owl-carousel", "pearl");
         renderCarousel(allProducts, ".wedding__owl-carousel", "married");
         renderCarousel(allProducts, ".shui__owl-carousel", "shui");
-        renderCarousel(allProducts, ".vang-y__owl-carousel", "Trang sức vàng Ý");
         renderCarousel(allProducts, ".Disney__owl-carousel", "Disney");
-        renderCarousel(allProducts, ".PNJ__owl-carousel", "STYLE by PNJ");
+        renderCarousel(allProducts, ".PNJ__owl-carousel", "PNJ");
         renderCarousel(allProducts, ".Watch__owl-carousel", "Watch");
-        renderCarousel(allProducts, ".jewelry__owl-carousel", "đá màu");
+    
 
     } catch (err) {
         console.error("Lỗi load dữ liệu:", err);
